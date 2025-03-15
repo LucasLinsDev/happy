@@ -1,0 +1,118 @@
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background: #b784db;
+}
+
+.envelope {
+    position: relative;
+    cursor: pointer;
+}
+
+.back {
+    position: relative;
+    width: 250px;
+    height: 200px;
+    background: #D14990;
+    overflow: hidden;
+}
+
+.front {
+    position: absolute;
+    border-right: 125px solid #D14990;
+    border-top: 100px solid transparent;
+    border-bottom: 100px solid transparent;
+    height: 0;
+    width: 0;
+    top: 0;
+    left: 125px;
+    z-index: 3;
+}
+
+.front:before {
+    content: "";
+    position: absolute;
+    border-left: 125px solid #D14990;
+    border-top: 100px solid transparent;
+    border-bottom: 100px solid transparent;
+    height: 0;
+    width: 0;
+    top: -100px;
+    left: -125px;
+}
+
+.front:after {
+    content: '';
+    position: absolute;
+    border-bottom: 100px solid #D14990;
+    border-left: 125px solid transparent;
+    border-right: 125px solid transparent;
+    height: 0;
+    width: 0;
+    top: -5px;
+    left: -125px;
+}
+
+.top {
+    position: absolute;
+    border-top: 105px solid #D14990;
+    border-left: 125px solid transparent;
+    border-right: 125px solid transparent;
+    height: 0;
+    width: 0;
+    top: 0;
+    transform-origin: top;
+    transition: 0.4s;
+    z-index: 2;
+   
+}
+
+.envelope:hover .top {
+    transform: rotateX(160deg);
+    
+}
+
+.letter {
+    position: absolute;
+    background: white;
+    width: 230px;
+    height: 180px;
+    top: 10px;
+    left: 10px;
+    transition: 0.6s;
+    z-index: 2;
+}
+
+.envelope:hover .letter {
+    transform: translateY(-90px);
+    height: 180px;
+    z-index: 3;
+}
+
+.text1 {
+    position: absolute;
+    color: black;
+    font-family: Arial, Helvetica, sans-serif;
+    top: -50%;
+}
+
+.text {
+    text-align: center;
+    font-size: 11px;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-top: 20px;
+    font-weight: bold;
+    color: black;
+    position: relative;
+    top: -20px;
+    left: 20px;
+}
+
+
+.img-01{
+    width:50%;
+    height:auto;
+    padding: 10px;
+}

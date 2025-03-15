@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sequência de Imagens</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bad+Script&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Bad Script', cursive;
+            background: #fff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Corações decorativos */
+        .heart {
+            position: absolute;
+            font-size: 40px;
+            color: #D14990;
+            opacity: 0.7;
+            animation: float 3s ease-in-out infinite alternate;
+        }
+
+        .heart1 { top: 10px; left: 20px; animation-duration: 4s; }
+        .heart2 { top: 50px; right: 30px; animation-duration: 5s; }
+        .heart3 { bottom: 20px; left: 10px; animation-duration: 3.5s; }
+        .heart4 { bottom: 40px; right: 50px; animation-duration: 4.5s; }
+
+        @keyframes float {
+            from { transform: translateY(0px) rotate(0deg); }
+            to { transform: translateY(-10px) rotate(5deg); }
+        }
+
+        /* Frases animadas - ajustadas para aparecer no topo */
+        .background-text {
+            position: absolute;
+            width: 100%;
+            top: 0;
+            left: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .text {
+            position: absolute;
+            font-size: 30px;
+            font-weight: bold;
+            color: rgba(0, 0, 0, 0.2);
+            opacity: 0;
+            transition: opacity 2s ease-in-out;
+            user-select: none;
+        }
+
+        .container {
+            max-width: 350px;
+            width: 100%;
+            height: auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .image-one {
+            max-width: 100%;
+            height: auto;
+            transition: opacity 0.5s ease-in-out;
+            display: block; /* Exibe a imagem */
+        }
+
+        .paper {
+            width: 200px;
+            height: 200px;
+            margin: 20px;
+            border-radius: 10px;
+        }
+
+        .button-next {
+            margin-top: 20px;
+            padding: 15px 30px;
+            font-size: 20px;
+            font-weight: bold;
+            font-family: 'Bad Script', cursive;
+            border: 3px solid black;
+            background: #FFD700;
+            color: black;
+            cursor: pointer;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            box-shadow: 4px 4px 0px black;
+        }
+
+        .button-next:hover {
+            background: #FFB700;
+            transform: translateY(-2px);
+            box-shadow: 6px 6px 0px black;
+        }
+
+        .button-next:active {
+            transform: translateY(2px);
+            box-shadow: 2px 2px 0px black;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Corações decorativos -->
+    <span class="heart heart1">❤</span>
+    <span class="heart heart2">❤</span>
+    <span class="heart heart3">❤</span>
+    <span class="heart heart4">❤</span>
+
+    <!-- Fundo para frases animadas -->
+    <div class="background-text"></div>
+
+    <div class="container">
+        <img id="image" class="image-one" src="img/01.jpg" alt="Imagem">
+    </div>
+
+    <!-- As divs que devem aparecer no final -->
+    <div id="paper1" class="paper" style="background-color:red; display:none;"></div>
+    <div id="paper2" class="paper" style="background-color:blue; display:none;"></div>
+    <div id="paper3" class="paper" style="background-color:yellow; display:none;"></div>
+
+    <button class="button-next" onclick="nextImage()">Próxima</button>
+
+    <script>
+        const images = [
+            "img/01.jpg",
+            "img/02.png",
+            "img/03.png",
+            "img/04.png",
+            "img/05.png"
+        ];
+
+        const phrases = [
+            "Você é incrível!",
+            "O amor está no ar!",
+            "Siga seu coração ❤️",
+            "A felicidade está aqui",
+            "Nunca pare de sonhar",
+            "A magia acontece nos detalhes",
+            "Tudo é possível!"
+        ];
+
+        let currentIndex = 0;
+
+        function nextImage() {
+            const imgElement = document.getElementById("image");
+            imgElement.style.opacity = "0";
+
+            setTimeout(() => {
+                // Quando as imagens terminarem, vamos começar a exibir a nova imagem
+                currentIndex = (currentIndex + 1) % images.length;
+                imgElement.src = images[currentIndex];
+                imgElement.style.opacity = "1";
+            }, 500);
+
+            // Quando a última imagem for alcançada, redirecionamos para a página code.html
+            if (currentIndex === images.length - 1) {
+                document.querySelector('.button-next').style.display = 'none';  // Oculta o botão
+                setTimeout(() => {
+                    window.location.href = 'code.html';  // Redireciona para a página code.html
+                }, 1000);
+            }
+        }
+
+        function createTextAnimation() {
+            const container = document.querySelector('.background-text');
+
+            setInterval(() => {
+                const textElement = document.createElement("div");
+                textElement.classList.add("text");
+                textElement.innerText = phrases[Math.floor(Math.random() * phrases.length)];
+
+                // Posicionamento aleatório apenas no topo
+                textElement.style.top = Math.random() * 20 + "vh";  // Restrito ao topo
+                textElement.style.left = Math.random() * 80 + "vw";
+
+                container.appendChild(textElement);
+
+                // Efeito de fade-in
+                setTimeout(() => {
+                    textElement.style.opacity = "1";
+                }, 100);
+
+                // Efeito de fade-out e remoção
+                setTimeout(() => {
+                    textElement.style.opacity = "0";
+                    setTimeout(() => textElement.remove(), 2000);
+                }, 4000);
+            }, 3000);
+        }
+
+        // Iniciar animação de frases
+        createTextAnimation();
+    </script>
+
+</body>
+</html>

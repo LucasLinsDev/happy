@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* Estilo geral */
+        body {
+            background-color: white;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            margin: 0;
+        }
+
+        .paper {
+            padding: 10px;
+            border: 1px solid rgb(218, 218, 218);
+            position: absolute;
+            max-width: 100%;
+            box-sizing: border-box;
+            border-radius: 8px; /* Borda arredondada */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra suave para dar o efeito de profundidade */
+            background: #fff;
+            transform: rotate(2deg); /* Um leve ângulo para simular uma foto fora de alinhamento perfeito */
+            transition: transform 0.3s ease-in-out; /* Efeito de animação na interação */
+        }
+
+        .paper:hover {
+            transform: rotate(5deg) scale(1.05); /* Ao passar o mouse, a imagem gira um pouco mais e aumenta ligeiramente */
+        }
+
+        /* Animação dos corações */
+        .heart {
+            position: absolute;
+            font-size: 40px;
+            color: #D14990;
+            opacity: 0.7;
+            animation: float 3s ease-in-out infinite alternate;
+        }
+
+        .heart1 { top: 10px; left: 20px; animation-duration: 4s; }
+        .heart2 { top: 50px; right: 30px; animation-duration: 5s; }
+        .heart3 { bottom: 20px; left: 10px; animation-duration: 3.5s; }
+        .heart4 { bottom: 40px; right: 50px; animation-duration: 4.5s; }
+
+        @keyframes float {
+            from { transform: translateY(0px) rotate(0deg); }
+            to { transform: translateY(-10px) rotate(5deg); }
+        }
+
+        /* Imagens responsivas */
+        .paper-image {
+            width: 100%;
+            max-width: 250px; /* Limita o tamanho máximo da imagem */
+            height: auto;
+            object-fit: cover; /* Garante que a imagem cubra bem o espaço disponível */
+            border-radius: 8px; /* Borda arredondada nas imagens */
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra interna para dar efeito de profundidade */
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Corações animados no fundo -->
+    <span class="heart heart1">❤</span>
+    <span class="heart heart2">❤</span>
+    <span class="heart heart3">❤</span>
+    <span class="heart heart4">❤</span>
+
+    <!-- Elementos 'paper' -->
+    <div class="paper">
+        <img src="images/13.png" class="paper-image" />
+    </div>
+    <div class="paper">
+        <img src="images/01.jpg" class="paper-image" />
+    </div>
+    <div class="paper">
+        <img src="images/02.jpg" class="paper-image" />
+    </div>
+    <div class="paper">
+        <img src="images/03.jpg" class="paper-image" />
+    </div>
+    <div class="paper">
+        <img src="images/04.jpg" class="paper-image" />
+    </div>
+    <div class="paper">
+        <img src="images/05.jpg" class="paper-image" />
+    </div>
+    <div class="paper">
+        <img src="images/06.jpg" class="paper-image" />
+    </div>
+    <div class="paper">
+        <img src="images/07.jpeg" class="paper-image" />
+    </div>
+    <div class="paper">
+        <img src="images/08.jpeg" class="paper-image" />
+    </div>
+    <div class="paper">
+        <img src="images/09.jpeg" class="paper-image" />
+    </div>
+    <div class="paper">
+        <img src="images/10.jpeg" class="paper-image" />
+    </div>
+    <div class="paper">
+        <img src="images/11.jpeg" class="paper-image" />
+    </div>
+
+    <script src="content.js"></script>
+</body>
+</html>

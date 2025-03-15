@@ -1,0 +1,89 @@
+body {
+    font-family: Arial, sans-serif;
+    background: black;
+}
+
+.animation-box {
+    width: 75%;
+    height: 27.5rem;
+    margin: 0 auto;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Primeiro texto */
+.first-text {
+    font-size: 4.4rem;
+    color: white;
+    position: absolute;
+    left: 2.5rem;
+    top: 5rem; /* Ajustado para não ficar fora da tela */
+    opacity: 0;
+    animation: fadeInOut 4s ease-in-out forwards;
+}
+
+/* Segundo texto */
+second-text {
+    font-size: 3rem;
+    color: white;
+    position: absolute;
+    left: 2.5rem;
+    top: 8rem; /* Ajustado para alinhar melhor */
+    opacity: 0;
+    animation: fadeInOut 4s ease-in-out 4.5s forwards;
+}
+
+/* Terceiro texto */
+.third-text {
+    font-size: 2rem;
+    color: white;
+    position: absolute;
+    left: 45%;
+    top: 50%;
+    opacity: 0;
+    transform: rotate(-90deg);
+    white-space: nowrap;
+    animation: fadeInOut 4s ease-in-out 9s forwards;
+}
+
+/* Quarto texto */
+.fourth-text {
+    font-size: 3rem;
+    color: rgb(240, 68, 68);
+    position: absolute;
+    left: 10%;
+    top: 12rem; /* Ajustado para melhor alinhamento */
+    opacity: 0;
+    animation: fadeInOut 4s ease-in-out 13.5s forwards;
+}
+
+/* Quinto texto */
+.fifth-text {
+    font-size: 3.5rem;
+    color: rgb(229, 249, 99);
+    position: absolute;
+    left: 5%;
+    bottom: 10rem; /* Ajustado para garantir visibilidade */
+    opacity: 0;
+    animation: fadeInOut 4s ease-in-out 18s forwards;
+}
+
+/* Animação de entrada e saída */
+@keyframes fadeInOut {
+    0% {
+        opacity: 0;
+        transform: translateY(30px); /* Suaviza a entrada */
+    }
+    25% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    75% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-30px); /* Evita que saia muito da tela */
+    }
+}

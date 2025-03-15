@@ -1,0 +1,36 @@
+body {
+    font-family: 'Bad Script', cursive;
+}
+
+.container{
+    max-width: 1440px;
+    margin: 0 auto;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.container h1 {
+    font-size: 60px;
+}
+
+.container h1:hover{
+    font-size:65px;
+    transition-duration: 0.2s;
+    cursor: pointer;
+}
+
+.image-one{
+    max-width: 350px;
+    width:100%;
+    height: auto;
+}
+
+
+/* LETRAS  */
+
+.letters h2{
+    font-size: 80px;
+}
