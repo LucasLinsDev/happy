@@ -136,7 +136,10 @@
     <div id="paper3" class="paper" style="background-color:yellow; display:none;"></div>
 
     <button class="button-next" onclick="nextImage()">Próxima</button>
-
+    <audio id="audioPlayer" autoplay loop>
+        <source src="audio.mp3" type="audio/mp3">
+        Seu navegador não suporta a tag de áudio.
+    </audio>
     <script>
         const images = [
             "img/01.jpg",
@@ -148,9 +151,8 @@
             "img/06.png",
             "img/07.png",
             "img/08.png",
-        
         ];
-
+    
         const phrases = [
             "Você é incrível!",
             "O amor está no ar!",
@@ -160,20 +162,20 @@
             "A magia acontece nos detalhes",
             "Tudo é possível!"
         ];
-
+    
         let currentIndex = 0;
-
+    
         function nextImage() {
             const imgElement = document.getElementById("image");
             imgElement.style.opacity = "0";
-
+    
             setTimeout(() => {
                 // Quando as imagens terminarem, vamos começar a exibir a nova imagem
                 currentIndex = (currentIndex + 1) % images.length;
                 imgElement.src = images[currentIndex];
                 imgElement.style.opacity = "1";
             }, 500);
-
+    
             // Quando a última imagem for alcançada, redirecionamos para a página code.html
             if (currentIndex === images.length - 1) {
                 document.querySelector('.button-next').style.display = 'none';  // Oculta o botão
@@ -181,27 +183,34 @@
                     window.location.href = 'code.html';  // Redireciona para a página code.html
                 }, 1000);
             }
+    
+            // Ativar a música quando o botão for clicado
+            const audioPlayer = document.getElementById('audioPlayer');
+            if (audioPlayer.paused) {
+                audioPlayer.play();  // Tocar a música
+                audioPlayer.volume=0.3;
+            }
         }
-
+    
         function createTextAnimation() {
             const container = document.querySelector('.background-text');
-
+    
             setInterval(() => {
                 const textElement = document.createElement("div");
                 textElement.classList.add("text");
                 textElement.innerText = phrases[Math.floor(Math.random() * phrases.length)];
-
+    
                 // Posicionamento aleatório apenas no topo
                 textElement.style.top = Math.random() * 20 + "vh";  // Restrito ao topo
                 textElement.style.left = Math.random() * 80 + "vw";
-
+    
                 container.appendChild(textElement);
-
+    
                 // Efeito de fade-in
                 setTimeout(() => {
                     textElement.style.opacity = "1";
                 }, 100);
-
+    
                 // Efeito de fade-out e remoção
                 setTimeout(() => {
                     textElement.style.opacity = "0";
@@ -209,10 +218,10 @@
                 }, 4000);
             }, 3000);
         }
-
+    
         // Iniciar animação de frases
         createTextAnimation();
     </script>
-
+    
 </body>
 </html>
